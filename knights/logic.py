@@ -71,7 +71,7 @@ class Symbol(Sentence):
 
 class Not(Sentence):
     def __init__(self, operand):
-        Sentence.validate(operand)
+        Sentence.validate(operand) 
         self.operand = operand
 
     def __eq__(self, other):
