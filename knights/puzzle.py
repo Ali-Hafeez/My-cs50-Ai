@@ -12,21 +12,28 @@ CKnave = Symbol("C is a Knave")
 # Puzzle 0
 # A says "I am both a knight and a knave."
 knowledge0 = And(
-    # TODO
+    # In the truth table, I needed an xor operation and for that is (A and B) and NOT(A and B)
+    # this allows me to be able to filter some true cases to the ones I need
+    # then I just use an and gate to get the true value which gives "A is a Knave"
+
+    And(Or(AKnight, AKnave), Not(And(AKnight, AKnave))), AKnave
+
 )
 
 # Puzzle 1
 # A says "We are both knaves."
 # B says nothing.
 knowledge1 = And(
-    # TODO
+    # Having deduced that A is a knave and B is a knight
+    # I need to correctly use the logical gates and get this information through
+    Or(AKnave, BKnave), And(Not(BKnave),BKnight)
 )
 
 # Puzzle 2
 # A says "We are the same kind."
 # B says "We are of different kinds."
 knowledge2 = And(
-    # TODO
+    And(Or(AKnave, BKnave), And(AKnave, BKnight))
 )
 
 # Puzzle 3
@@ -35,7 +42,7 @@ knowledge2 = And(
 # B says "C is a knave."
 # C says "A is a knight."
 knowledge3 = And(
-    # TODO
+   And(Not(AKnight), AKnave), And(And(Not(BKnave), BKnight), And(Not(CKnight), CKnave))
 )
 
 
