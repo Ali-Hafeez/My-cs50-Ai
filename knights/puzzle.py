@@ -26,7 +26,7 @@ knowledge0 = And(
 knowledge1 = And(
     # Having deduced that A is a knave and B is a knight
     # I need to correctly use the logical gates and get this information through
-    Or(AKnave, BKnave), And(Not(BKnave),BKnight)
+    Or(AKnave, BKnave), And(Not(BKnave), BKnight)
 )
 
 # Puzzle 2
@@ -42,7 +42,8 @@ knowledge2 = And(
 # B says "C is a knave."
 # C says "A is a knight."
 knowledge3 = And(
-   And(Not(AKnight), AKnave), And(And(Not(BKnave), BKnight), And(Not(CKnight), CKnave))
+    # And(AKnight, AKnave), And(And(Not(BKnave), BKnight), And(Not(CKnight), CKnave))
+    And(Or(AKnave, AKnight), AKnave), CKnave, BKnight
 )
 
 
